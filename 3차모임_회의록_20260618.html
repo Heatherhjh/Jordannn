@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3차 요르단 팀 모임 — 2026.06.18</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+    :root {
+      --sand: #E8D5B0;
+      --sand-light: #F5ECD8;
+      --sand-dark: #C4A96E;
+      --terra: #B85C38;
+      --terra-light: #D4785A;
+      --terra-muted: #7A3D26;
+      --night: #1A2744;
+      --night-mid: #243560;
+      --night-light: #3D5A8A;
+      --gold: #C9922A;
+      --gold-light: #E8B84B;
+      --olive: #6B7C45;
+      --cream: #FAF6EE;
+      --text-dark: #1E1A14;
+      --text-mid: #4A3F30;
+      --text-muted: #7A6E5A;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.7;
+      padding: 40px 20px 80px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* 헤더 */
+    .hero {
+      background: var(--night);
+      border-radius: 16px;
+      padding: 44px 40px 36px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to top right, var(--terra) 0%, transparent 60%);
+      opacity: 0.35;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, var(--night-light) 0%, transparent 70%);
+      opacity: 0.4;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+      background: rgba(201,146,42,0.18);
+      border: 1px solid rgba(201,146,42,0.35);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      position: relative;
+    }
+    .hero-members {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      position: relative;
+    }
+    .member-chip {
+      font-size: 12px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+      border-radius: 20px;
+      padding: 3px 12px;
+    }
+    .notice-bar {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: rgba(200,180,140,0.2);
+      border-left: 3px solid var(--sand-dark);
+      border-radius: 0 6px 6px 0;
+      padding: 8px 12px;
+      margin-top: 20px;
+    }
+
+    /* 섹션 공통 */
+    .section { margin-bottom: 28px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--terra);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--sand);
+    }
+
+    /* 팀장 그리드 */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    .role-card {
+      background: #fff;
+      border: 1px solid var(--sand);
+      border-radius: 12px;
+      padding: 14px 10px 12px;
+      text-align: center;
+    }
+    .role-card-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+    .role-card-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .role-card-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--night);
+    }
+
+    /* 말씀 후보 */
+    .verse-list { display: flex; flex-direction: column; gap: 8px; }
+    .verse-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      background: #fff;
+      border: 1px solid var(--sand);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .verse-accent {
+      width: 4px;
+      background: var(--sand-dark);
+      flex-shrink: 0;
+      align-self: stretch;
+    }
+    .verse-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 11px 14px;
+      flex: 1;
+    }
+    .verse-who {
+      font-size: 11px;
+      color: var(--text-muted);
+      min-width: 50px;
+      padding-top: 1px;
+      flex-shrink: 0;
+    }
+    .verse-ref {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--terra-muted);
+      min-width: 96px;
+      flex-shrink: 0;
+    }
+    .verse-note { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+    .vote-note {
+      font-size: 12px;
+      color: var(--terra);
+      background: rgba(184,92,56,0.07);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-top: 8px;
+    }
+
+    /* 기도편지 + 팀명 */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .info-card {
+      background: #fff;
+      border: 1px solid var(--sand);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .info-card-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--night);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--sand-light);
+    }
+    .info-card ul { padding-left: 16px; }
+    .info-card li {
+      font-size: 13px;
+      color: var(--text-mid);
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+    .info-card li strong { color: var(--night); font-weight: 700; }
+    .team-name-chip {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--night);
+      background: var(--sand-light);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 6px 14px;
+      margin: 6px 0;
+    }
+
+    /* 캠프 */
+    .camp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .camp-card {
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid transparent;
+    }
+    .camp-card.green {
+      background: rgba(107,124,69,0.08);
+      border-color: rgba(107,124,69,0.25);
+    }
+    .camp-card.amber {
+      background: rgba(201,146,42,0.08);
+      border-color: rgba(201,146,42,0.25);
+    }
+    .camp-card.blue {
+      background: rgba(61,90,138,0.08);
+      border-color: rgba(61,90,138,0.25);
+    }
+    .camp-name {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .camp-card.green .camp-name { color: var(--olive); }
+    .camp-card.amber .camp-name { color: var(--gold); }
+    .camp-card.blue .camp-name { color: var(--night-light); }
+    .camp-desc { font-size: 12px; color: var(--text-mid); line-height: 1.5; }
+
+    /* 액션 아이템 */
+    .todo-list { display: flex; flex-direction: column; gap: 6px; }
+    .todo-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid var(--sand);
+      border-radius: 10px;
+      padding: 11px 14px;
+    }
+    .todo-row.urgent { border-left: 3px solid var(--terra); padding-left: 12px; }
+    .todo-check {
+      width: 16px; height: 16px;
+      border: 1.5px solid var(--sand-dark);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .todo-text { flex: 1; font-size: 13px; color: var(--text-dark); line-height: 1.5; }
+    .todo-text strong { font-weight: 700; color: var(--night); }
+    .todo-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .todo-tag.hot { color: var(--terra); font-weight: 700; }
+
+    /* 다음 모임 */
+    .next-card {
+      background: var(--night);
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .next-date-block { text-align: center; }
+    .next-month { font-size: 11px; color: var(--gold-light); font-weight: 500; letter-spacing: 0.05em; }
+    .next-day { font-size: 36px; font-weight: 700; color: #fff; line-height: 1; }
+    .next-weekday { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .next-divider { width: 1px; height: 56px; background: rgba(255,255,255,0.15); }
+    .next-info { color: #fff; }
+    .next-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .next-detail { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+    .next-detail span { color: var(--gold-light); }
+
+    /* 기도제목 */
+    .prayer-list { display: flex; flex-direction: column; gap: 8px; }
+    .prayer-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid var(--sand);
+      border-radius: 10px;
+      align-items: flex-start;
+    }
+    .prayer-bullet {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .prayer-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+    /* 푸터 */
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .footer strong { color: var(--terra); }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 헤더 -->
+  <div class="hero">
+    <div class="hero-badge">3차 모임 · 2026년 6월 18일</div>
+    <div class="hero-title">요르단 단기선교 팀 모임</div>
+    <div class="hero-sub">히즈넷 요르단팀 · 매주 목요일</div>
+    <div class="hero-members">
+      <span class="member-chip">한효정 (진행)</span>
+      <span class="member-chip">박지현</span>
+      <span class="member-chip">배윤석 (부안 이동 중)</span>
+      <span class="member-chip">서응빈 (마이크 오프)</span>
+      <span class="member-chip">김예슬 (이탈리아)</span>
+    </div>
+    <div class="notice-bar">※ 녹취 전사 과정에서 배윤석·서응빈 발언 일부 혼재. 팀장 배분 결과 기준으로 정리.</div>
+  </div>
+
+  <!-- 팀장 배분 -->
+  <div class="section">
+    <div class="section-label">팀장 배분 확정</div>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-card-icon">📖</div>
+        <div class="role-card-label">말씀</div>
+        <div class="role-card-name">서응빈</div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-icon">🙏</div>
+        <div class="role-card-label">기도</div>
+        <div class="role-card-name">한효정</div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-icon">💪</div>
+        <div class="role-card-label">체력</div>
+        <div class="role-card-name">박지현</div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-icon">🎵</div>
+        <div class="role-card-label">찬양</div>
+        <div class="role-card-name">배윤석</div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-icon">🗺️</div>
+        <div class="role-card-label">요르단</div>
+        <div class="role-card-name">김예슬</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 주제 말씀 후보 -->
+  <div class="section">
+    <div class="section-label">주제 말씀 후보 — 익명 투표 (기한: 6/21 토요일)</div>
+    <div class="verse-list">
+      <div class="verse-row">
+        <div class="verse-accent" style="background:#C4A96E;"></div>
+        <div class="verse-inner">
+          <div class="verse-who">박지현</div>
+          <div class="verse-ref">이사야 43:19</div>
+          <div class="verse-note">광야에 길을 내시는 하나님 — 내 힘이 아닌 하나님의 역사로</div>
+        </div>
+      </div>
+      <div class="verse-row">
+        <div class="verse-accent" style="background:#3D5A8A;"></div>
+        <div class="verse-inner">
+          <div class="verse-who">서응빈</div>
+          <div class="verse-ref">고전 12:7</div>
+          <div class="verse-note">성령의 나타나심 — 자기 자랑 아닌 타인의 유익을 위해</div>
+        </div>
+      </div>
+      <div class="verse-row">
+        <div class="verse-accent" style="background:#C4A96E;"></div>
+        <div class="verse-inner">
+          <div class="verse-who">김예슬</div>
+          <div class="verse-ref">이사야 40:3</div>
+          <div class="verse-note">광야에서 여호와의 길을 예비하러 가는 팀 — 직설적인 파송 느낌</div>
+        </div>
+      </div>
+      <div class="verse-row">
+        <div class="verse-accent" style="background:#3D5A8A;"></div>
+        <div class="verse-inner">
+          <div class="verse-who">배윤석</div>
+          <div class="verse-ref">로마서 10:15</div>
+          <div class="verse-note">복음 전하는 자의 아름다운 발걸음 — 가는 것 자체의 의미</div>
+        </div>
+      </div>
+      <div class="verse-row">
+        <div class="verse-accent" style="background:#3D5A8A;"></div>
+        <div class="verse-inner">
+          <div class="verse-who">배윤석</div>
+          <div class="verse-ref">시편 23:1</div>
+          <div class="verse-note">목자 되신 하나님 — 방향을 모를 때의 인도하심</div>
+        </div>
+      </div>
+      <div class="verse-row">
+        <div class="verse-accent" style="background:#B85C38;"></div>
+        <div class="verse-inner">
+          <div class="verse-who">한효정</div>
+          <div class="verse-ref">마태복음 14:28</div>
+          <div class="verse-note">한 걸음을 떼면 주님이 붙드심 — 물 위를 걷는 믿음으로 출발</div>
+        </div>
+      </div>
+    </div>
+    <div class="vote-note">📌 이사야 광야 키워드(43장·40장)가 겹침 — 투표로 최종 결정. 배윤석이 단톡에 익명 투표 개설 예정.</div>
+  </div>
+
+  <!-- 기도편지 + 팀명 -->
+  <div class="section">
+    <div class="section-label">기도 편지 & 팀명</div>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">기도 편지 기획 (담당: 서응빈)</div>
+        <ul>
+          <li>매거진 스타일 (김예슬 제안)</li>
+          <li>앞면: 사막 배경 + 개인 사진 누끼 + 팀명 + 주제 말씀</li>
+          <li>뒷면: 기도 제목 + 후원 계좌</li>
+          <li>한국어·영어 버전 각 1부</li>
+          <li><strong>사진 → 6/21(토)까지 단톡 업로드</strong><br>(셀카 + 선글라스 버전 각 1장)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">팀명 — 4차 모임(6/25) 전 결정</div>
+        <div class="team-name-chip">야르단 (יַרְדֵּן)</div>
+        <ul>
+          <li>배윤석 제안</li>
+          <li>요르단의 히브리어 어원</li>
+          <li>'내려가는 곳'이라는 뜻</li>
+          <li>찬반 의견 엇갈림 → 숙고 후 결정</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 캠프 기획 방향 -->
+  <div class="section">
+    <div class="section-label">캠프 기획 방향</div>
+    <div class="camp-grid">
+      <div class="camp-card green">
+        <div class="camp-name">✅ 암만 네친구 공부방</div>
+        <div class="camp-desc">영어 학구열 있음. 편안한 분위기. 복음 수용성 약간 있음.</div>
+      </div>
+      <div class="camp-card amber">
+        <div class="camp-name">⚠️ 루세이퍼 공부방</div>
+        <div class="camp-desc">공부 관심 없음. 거친 분위기. 놀이·관계 중심 접근 필요.</div>
+      </div>
+      <div class="camp-card blue">
+        <div class="camp-name">⛪ 현지 교회</div>
+        <div class="camp-desc">복음 전파 가능. 여름 성경학교 스타일. 현지인 교사와 동역.</div>
+      </div>
+    </div>
+    <div class="info-card" style="margin-top:10px;">
+      <div class="info-card-title">소그룹 로테이션 방식 (한효정 제안)</div>
+      <ul>
+        <li>팀원 각자 하나의 콘텐츠 준비 → 아이들 8명씩 순서대로 선생님을 돌며 배움</li>
+        <li>찬양·연극·영어·게임 등 형식 자유</li>
+        <li>마지막 발표회로 마무리</li>
+        <li><strong>간증 준비:</strong> 팀원 전원 A4 1페이지 한국어 간증 (출발 약 1달 전)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 액션 아이템 -->
+  <div class="section">
+    <div class="section-label">이번 주 액션 아이템</div>
+    <div class="todo-list">
+      <div class="todo-row urgent">
+        <div class="todo-check"></div>
+        <div class="todo-text">주제 말씀 익명 투표 단톡 개설</div>
+        <div class="todo-tag hot">배윤석 · 6/21</div>
+      </div>
+      <div class="todo-row urgent">
+        <div class="todo-check"></div>
+        <div class="todo-text">개인 사진 단톡 업로드 (셀카 + 선글라스 각 1장)</div>
+        <div class="todo-tag hot">전원 · 6/21</div>
+      </div>
+      <div class="todo-row urgent">
+        <div class="todo-check"></div>
+        <div class="todo-text">주제 말씀 투표 참여</div>
+        <div class="todo-tag hot">전원 · 6/21</div>
+      </div>
+      <div class="todo-row">
+        <div class="todo-check"></div>
+        <div class="todo-text">기도 제목 텍스트 정리 → <strong>서응빈에게 전달</strong></div>
+        <div class="todo-tag">한효정</div>
+      </div>
+      <div class="todo-row">
+        <div class="todo-check"></div>
+        <div class="todo-text">항공권 서치 재개 (종전 협상 이후 환율 추이 확인)</div>
+        <div class="todo-tag">전원</div>
+      </div>
+      <div class="todo-row">
+        <div class="todo-check"></div>
+        <div class="todo-text">팀명 후보 숙고</div>
+        <div class="todo-tag">전원 · 6/25 전</div>
+      </div>
+      <div class="todo-row">
+        <div class="todo-check"></div>
+        <div class="todo-text">캠프 아이디어 러프 스케치 (3개 장소별)</div>
+        <div class="todo-tag">전원 · 7/2 전</div>
+      </div>
+      <div class="todo-row">
+        <div class="todo-check"></div>
+        <div class="todo-text">A4 1페이지 한국어 간증 작성</div>
+        <div class="todo-tag">전원 · 출발 1달 전</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 기도 제목 -->
+  <div class="section">
+    <div class="section-label">기도 제목</div>
+    <div class="prayer-list">
+      <div class="prayer-item">
+        <div class="prayer-bullet"></div>
+        <div class="prayer-text">비행기 값과 환율, 현실적인 조건들 속에서도 믿음으로 한 걸음 내딛을 수 있도록</div>
+      </div>
+      <div class="prayer-item">
+        <div class="prayer-bullet"></div>
+        <div class="prayer-text">각자의 바쁜 일상 속에서 요르단을 품는 마음이 꺼지지 않도록</div>
+      </div>
+      <div class="prayer-item">
+        <div class="prayer-bullet"></div>
+        <div class="prayer-text">주제 말씀 선정 과정에서 팀이 하나 되도록</div>
+      </div>
+      <div class="prayer-item">
+        <div class="prayer-bullet"></div>
+        <div class="prayer-text">기도 편지가 후원자들의 마음을 움직이는 도구가 되도록</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 다음 모임 -->
+  <div class="section">
+    <div class="section-label">다음 모임 예고</div>
+    <div class="next-card">
+      <div class="next-date-block">
+        <div class="next-month">JUN</div>
+        <div class="next-day">26</div>
+        <div class="next-weekday">금요일</div>
+      </div>
+      <div class="next-divider"></div>
+      <div class="next-info">
+        <div class="next-title">4차 모임 <span style="font-size:13px; font-weight:400; color:rgba(255,255,255,0.45);">오후 4시 (한국시간)</span></div>
+        <div class="next-detail">
+          일정 변경: 6/25(목) → 6/26(금) · <span>배윤석 예비군 일정으로 연기</span><br>
+          <span>이길 쌤 (선교사님)</span> 초청 — 현지 영혼들의 사연 공유<br>
+          팀명 최종 결정 · 항공권 윤곽 기대
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <strong>히즈넷 요르단팀</strong> · 매주 목요일 · 2026 Summer Edu Camp
+  </div>
+
+</div>
+</body>
+</html>
