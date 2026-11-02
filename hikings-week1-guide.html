@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>히킹스 온라인 1주차 조장 인도 가이드</title>
+<style>
+:root{--bg:#faf8f4;--card:#fff;--ink:#2b2a28;--sub:#6b665e;--line:#e6e0d5;--gospel:#b5532f;--worship:#2f6f8f;--ministry:#5b7f3a;--soft:#f3efe7;--warn:#c9a227;--btn:#2f6f8f;--btnink:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#1c1b19;--card:#262421;--ink:#ece8e0;--sub:#a39d92;--line:#3a3732;--soft:#2f2c28;--gospel:#e08a64;--worship:#6fb0d0;--ministry:#9bc272;--warn:#d9b948;--btn:#6fb0d0;--btnink:#12202a}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.75;font-size:16px}
+.wrap{max-width:820px;margin:0 auto;padding:28px 16px 80px}
+h1{font-size:1.6rem;margin:0 0 4px;line-height:1.35}
+.meta{color:var(--sub);font-size:.9rem;margin-bottom:18px}
+h2{font-size:1.25rem;margin:40px 0 12px;scroll-margin-top:12px}
+h3{font-size:1.02rem;margin:18px 0 6px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.nav a{padding:6px 14px;border-radius:99px;background:var(--soft);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0}
+.lead{font-size:1.02rem}
+.sec{border-left:6px solid var(--line)}
+.sec.g{border-left-color:var(--gospel)}.sec.w{border-left-color:var(--worship)}.sec.m{border-left-color:var(--ministry)}
+.sec h2{margin-top:0}
+.g h2 span{color:var(--gospel)}.w h2 span{color:var(--worship)}.m h2 span{color:var(--ministry)}
+.tag{display:inline-block;font-size:.8rem;color:var(--sub);background:var(--soft);border-radius:6px;padding:1px 8px;margin-right:6px}
+ul,ol{padding-left:1.2rem;margin:6px 0}
+li{margin:4px 0}
+.box{background:var(--soft);border-radius:10px;padding:12px 16px;margin:12px 0}
+.box strong.t{display:block;font-size:.85rem;color:var(--sub);margin-bottom:2px}
+table{width:100%;border-collapse:collapse;font-size:.93rem;margin:8px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--sub);font-weight:600;font-size:.85rem}
+.scroll{overflow-x:auto}
+.grid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+.grid .card{margin:0}
+.warn{border-left:4px solid var(--warn);background:var(--soft);padding:10px 14px;border-radius:8px;margin:12px 0}
+.time{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--sub)}
+.sub{color:var(--sub);font-size:.92rem}
+footer{color:var(--sub);font-size:.85rem;margin-top:40px}
+
+/* 흐름 */
+.steps{list-style:none;padding:0;margin:10px 0;counter-reset:s}
+.steps li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);margin:0}
+.steps li:last-child{border-bottom:0}
+.steps .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--worship);color:#fff;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.steps .tm{flex:none;min-width:74px;font-weight:700;color:var(--worship);font-variant-numeric:tabular-nums}
+.steps b{display:block}
+.steps small{color:var(--sub);display:block;line-height:1.5}
+.steps li.hl{background:color-mix(in srgb,var(--ministry) 14%,transparent);border-radius:10px;padding-left:8px;padding-right:8px}
+.steps li.hl .n{background:var(--ministry)}
+.steps li.hl .tm{color:var(--ministry)}
+
+/* 이번 주 질문 */
+.qcard{border:3px solid var(--ministry);background:var(--card);border-radius:18px;padding:22px 22px 18px;margin:16px 0}
+.qlabel{display:inline-block;background:var(--ministry);color:#fff;font-weight:700;font-size:.85rem;border-radius:99px;padding:3px 14px;margin-bottom:6px}
+.qcard h2{margin:6px 0 4px;font-size:1.4rem}
+.q{border-top:1px solid var(--line);padding:16px 0 4px}
+.q:first-of-type{border-top:0}
+.qhead{font-size:.85rem;color:var(--ministry);font-weight:700;letter-spacing:.02em}
+.qtext{font-size:1.2rem;line-height:1.6;font-weight:700;margin:2px 0 6px}
+.qverse{font-size:.95rem;color:var(--sub);margin:0 0 8px}
+.qverse b{color:var(--ink)}
+.fu{font-size:.92rem}
+.fu summary{cursor:pointer;color:var(--worship);font-weight:600;padding:6px 0}
+.chat{white-space:pre-wrap;background:var(--soft);border-radius:10px;padding:12px 14px;font-size:.95rem;margin:8px 0;border:1px dashed var(--line)}
+
+/* 복사 버튼 */
+.copy{appearance:none;border:0;background:var(--btn);color:var(--btnink);font:inherit;font-size:.9rem;font-weight:700;border-radius:10px;padding:10px 16px;min-height:44px;cursor:pointer}
+.copy:active{transform:scale(.97)}
+.copy.done{background:var(--ministry);color:#fff}
+.copy.alt{background:transparent;color:var(--btn);border:2px solid var(--btn)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+
+/* 말씀 */
+.verse{border-left:5px solid var(--gospel);background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gospel);border-radius:12px;padding:14px 18px;margin:12px 0}
+.verse .ref{font-weight:700;color:var(--gospel)}
+.verse .tt{font-size:.82rem;color:var(--sub);margin-left:6px}
+.verse p{margin:6px 0 8px;font-size:1.05rem;line-height:1.8}
+.verse .note{font-size:.88rem;color:var(--sub);margin:0 0 8px}
+@media print{body{background:#fff}.card,.qcard,.verse{break-inside:avoid}.copy,.nav{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>히킹스 온라인 1주차 조장 인도 가이드</h1>
+<div class="meta">Day 1 〈내 삶에 하나님 나라가 시작된다면?〉 · 워크북 기준 · 목·금 두 조 모임에서 뽑은 진행 팁</div>
+
+<nav class="nav">
+  <a href="#flow">진행 흐름</a>
+  <a href="#questions">이번 주 질문</a>
+  <a href="#verses">말씀 구절</a>
+  <a href="#lecture">강의 핵심</a>
+  <a href="#tips">관찰·체크리스트</a>
+</nav>
+
+<div class="card lead">
+  <b>한 줄 요약.</b> 모임은 <b>아이스브레이킹 → 키워드 3가지 나눔 → 조장 요약 → 소그룹 질문 → 기도</b> 순서다.
+  조장은 설명하는 사람이 아니라 <b>참가자 입에서 나온 키워드를 엮고, 나눔을 기도로 이어 주는 사람</b>이다.
+  두 조에서 가장 크게 남은 숙제는 <b>요약이 길어지면 기도 시간이 줄어든다</b>는 것. 요약은 3~5분으로 끝낸다.
+</div>
+
+<!-- 1 흐름 -->
+<h2 id="flow">1. 진행 흐름</h2>
+<div class="card">
+<p class="sub" style="margin:0 0 4px">왼쪽 숫자는 <b>그 순서에 쓰는 시간</b>이다 (누적이 아님). 8단계를 합치면 60분이다.</p>
+<ol class="steps">
+  <li><span class="n">1</span><span class="tm">1분</span><div><b>여는 기도</b></div></li>
+  <li><span class="n">2</span><span class="tm">9분</span><div><b>아이스브레이킹 (자기소개)</b><small>예) 히킹스를 들으며 기대하는 모습 · 좋아하는 색깔</small></div></li>
+  <li><span class="n">3</span><span class="tm">12분</span><div><b>키워드 3가지 나눔</b><small>채팅창에 올린 뒤, 늦게 올린 순서로 "왜 골랐는지" 한 문장 이상 (10~15분)</small></div></li>
+  <li><span class="n">4</span><span class="tm">4분</span><div><b>조장 요약</b><small>참가자 키워드를 아래 「강의 핵심」 뼈대에 걸어 엮고 빠진 꼭지만 보충</small></div></li>
+  <li class="hl"><span class="n">5</span><span class="tm">3분</span><div><b>질문 제시 + 생각할 시간 (1분)</b><small>워크북 소그룹 질문을 채팅에 올린다 → <a href="#questions">질문 보기·복사</a></small></div></li>
+  <li class="hl"><span class="n">6</span><span class="tm">18분</span><div><b>질문에 대한 생각 나눔</b><small>남는 시간. 인당 2~3분, 답이 곧 기도제목. 조장이 받아 적는다</small></div></li>
+  <li><span class="n">7</span><span class="tm">8분</span><div><b>기도</b><small>나눔이 길어져도 이 시간은 지킨다</small></div></li>
+  <li><span class="n">8</span><span class="tm">5분</span><div><b>사진 · 공지</b><small>조기 이탈자 확인 후 단체 사진, 다음 주 일정</small></div></li>
+</ol>
+<p class="sub" style="margin:6px 0 0">인원이 많으면 6번(질문 나눔)을 늘리고, 요약(4번)과 기도(7번)는 줄이지 않는다. 질문을 하나만 써도 된다. 9~10명 조는 나눔만 35분이 걸렸다.</p>
+</div>
+
+<!-- 2 질문 -->
+<h2 id="questions">2. 이번 주 소그룹 질문</h2>
+<div class="qcard">
+  <span class="qlabel">조장용 · 1주차 소그룹 질문</span>
+  <div class="sub">워크북 Closing Questions 그대로. 요약이 끝나면 아래 두 질문을 채팅에 올리고 1분 생각할 시간을 준다.</div>
+
+  <div class="q">
+    <div class="qhead">① HIS KINGDOM &amp; ME</div>
+    <div class="qtext" id="q1">하나님이 내 마음과 삶을 다스리실 때, 회복되기를 기대하는 부분이나 새롭게 변화되고 싶은 태도는 무엇인가요?</div>
+    <p class="qverse">📖 <b>“하나님의 다스림과 내 마음의 회복”</b> (눅 17:21)</p>
+    <div class="row">
+      <button class="copy" data-copy="① 하나님이 내 마음과 삶을 다스리실 때, 회복되기를 기대하는 부분이나 새롭게 변화되고 싶은 태도는 무엇인가요?&#10;(눅 17:21 하나님의 다스림과 내 마음의 회복)">질문 1 복사</button>
+    </div>
+    <details class="fu"><summary>답이 막힐 때 꼬리질문 (조장 제안)</summary>
+      <ul>
+        <li>그 부분이 회복되면 하루 중 어떤 장면이 달라질까요?</li>
+        <li>내 힘으로 붙잡고 있어서 맡기기 어려운 영역은 어디인가요?</li>
+      </ul>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="qhead">② HIS KINGDOM &amp; MY LIFE</div>
+    <div class="qtext" id="q2">내가 가진 재능, 전공, 관심사, 진로를 활용해 섬기고 싶은 사람이나 공동체가 있나요? <span style="font-weight:600">(세계선교와 내 삶의 연결고리 찾기)</span></div>
+    <p class="qverse">📖 <b>“나의 자리에서 참여하는 선교”</b> (마 28:19–20)</p>
+    <div class="row">
+      <button class="copy" data-copy="② 내가 가진 재능, 전공, 관심사, 진로를 활용해 섬기고 싶은 사람이나 공동체가 있나요? (세계선교와 내 삶의 연결고리 찾기)&#10;(마 28:19–20 나의 자리에서 참여하는 선교)">질문 2 복사</button>
+    </div>
+    <details class="fu"><summary>답이 막힐 때 꼬리질문 (조장 제안)</summary>
+      <ul>
+        <li>지금 내 일상에서 가장 가까운 "예루살렘"은 누구인가요? (행 1:8)</li>
+        <li>가는 사람 · 보내는 사람 · 자기 자리에서 준비하는 사람 중 지금 나는 어디에 가깝나요?</li>
+      </ul>
+    </details>
+  </div>
+
+  <div class="row" style="margin-top:12px">
+    <button class="copy" data-copy="📖 1주차 소그룹 질문&#10;&#10;① 하나님이 내 마음과 삶을 다스리실 때, 회복되기를 기대하는 부분이나 새롭게 변화되고 싶은 태도는 무엇인가요?&#10;(눅 17:21)&#10;&#10;② 내가 가진 재능, 전공, 관심사, 진로를 활용해 섬기고 싶은 사람이나 공동체가 있나요? (세계선교와 내 삶의 연결고리 찾기)&#10;(마 28:19–20)&#10;&#10;생각할 시간 1분 드릴게요. 답을 기도제목으로 이어서 나눠 주세요.">두 질문 한 번에 복사 (채팅용)</button>
+  </div>
+
+  <div class="box"><strong class="t">조장이 지킬 것</strong>
+    <ul style="margin:2px 0">
+      <li>정답을 주지 않는다. 받아 적고 기도로 잇는다. <b>답이 곧 기도제목</b>이다.</li>
+      <li>글로 쓰기 힘든 사람은 <b>말로 하게 하고 조장이 받아 적는다</b>.</li>
+      <li>나눔이 길어지면 질문 하나만 쓰고, 기도 7~10분을 먼저 지킨다.</li>
+    </ul>
+  </div>
+
+  <details class="fu"><summary>워크북 세 번째 질문 (선택 · His Kingdom School)</summary>
+    <p style="margin:6px 0"><b>“하나님나라, 한 영혼, 부르심”</b></p>
+    <ul>
+      <li><b>하나님나라</b>: 이번 과정을 통해 새롭게 깨달았거나 내 삶에 이루어지길 바라는 모습은 무엇인가요?</li>
+      <li><b>한 영혼</b>: 하나님께서 내 마음에 품게 하시는 사람, 공동체, 혹은 민족이 있나요?</li>
+      <li><b>부르심</b>: 이번 훈련을 통해 발견한 나의 은사나, 삶에서 시도해 보고 싶은 작은 순종은 무엇인가요?</li>
+    </ul>
+    <p class="sub" style="margin:4px 0">1주차 필수는 아니다. 시간이 남거나 과정을 마무리하는 주에 쓴다.</p>
+    <div class="row"><button class="copy alt" data-copy="하나님나라, 한 영혼, 부르심&#10;&#10;하나님나라: 이번 과정을 통해 새롭게 깨달았거나 내 삶에 이루어지길 바라는 모습은 무엇인가요?&#10;한 영혼: 하나님께서 내 마음에 품게 하시는 사람, 공동체, 혹은 민족이 있나요?&#10;부르심: 이번 훈련을 통해 발견한 나의 은사나, 삶에서 시도해 보고 싶은 작은 순종은 무엇인가요?">세 번째 질문 복사</button></div>
+  </details>
+</div>
+
+<!-- 3 말씀 -->
+<h2 id="verses">3. 말씀 구절</h2>
+<p class="sub">워크북 흐름(문화명령 → 지상명령 → 확장)에 맞춘 순서. 본문은 개역개정이며, 채팅에 붙여 넣을 수 있다. 쓰기 전에 성경으로 한 번 대조해 주세요.</p>
+
+<div class="verse">
+  <div><span class="ref">창세기 1:28</span><span class="tt">문화명령</span></div>
+  <p>하나님이 그들에게 복을 주시며 하나님이 그들에게 이르시되 생육하고 번성하여 땅에 충만하라, 땅을 정복하라, 바다의 물고기와 하늘의 새와 땅에 움직이는 모든 생물을 다스리라 하시니라</p>
+  <p class="note">워크북 키워드: 생육 · 번성 · 충만 · 다스림 / <b>대리 통치자(청지기)의 사명</b>. 하나님이 창조 때 주신 첫 사명이다.</p>
+  <div class="row"><button class="copy" data-copy="창세기 1:28 (문화명령)&#10;하나님이 그들에게 복을 주시며 하나님이 그들에게 이르시되 생육하고 번성하여 땅에 충만하라, 땅을 정복하라, 바다의 물고기와 하늘의 새와 땅에 움직이는 모든 생물을 다스리라 하시니라">복사</button></div>
+</div>
+
+<div class="verse">
+  <div><span class="ref">마태복음 28:19–20</span><span class="tt">지상명령</span></div>
+  <p>그러므로 너희는 가서 모든 족속으로 제자를 삼아 아버지와 아들과 성령의 이름으로 세례를 베풀고 내가 너희에게 분부한 모든 것을 가르쳐 지키게 하라 볼지어다 내가 세상 끝날까지 너희와 항상 함께 있으리라</p>
+  <p class="note">워크북 핵심: '모든 민족을 제자로 삼아…' / <b>문화명령에서 지상명령으로</b>. 창조 때의 사명이 구원 이후 "제자 삼는 일"로 이어진다. 강의에서는 "민족"으로 부르고, 개역개정 본문은 "족속"이다.</p>
+  <div class="row"><button class="copy" data-copy="마태복음 28:19-20 (지상명령)&#10;그러므로 너희는 가서 모든 족속으로 제자를 삼아 아버지와 아들과 성령의 이름으로 세례를 베풀고 내가 너희에게 분부한 모든 것을 가르쳐 지키게 하라 볼지어다 내가 세상 끝날까지 너희와 항상 함께 있으리라">복사</button></div>
+</div>
+
+<div class="verse">
+  <div><span class="ref">사도행전 1:8</span><span class="tt">확장의 지도</span></div>
+  <p>오직 성령이 너희에게 임하시면 너희가 권능을 받고 예루살렘과 온 유대와 사마리아와 땅 끝까지 이르러 내 증인이 되리라 하시니라</p>
+  <p class="note">워크북 핵심: 예루살렘 · 유대 · 사마리아 · 땅 끝까지 → <b>확장의 지도</b>. 단계가 아니라 <b>동시에, 동일선상에서</b> 일어난다.</p>
+  <div class="row"><button class="copy" data-copy="사도행전 1:8 (확장의 지도)&#10;오직 성령이 너희에게 임하시면 너희가 권능을 받고 예루살렘과 온 유대와 사마리아와 땅 끝까지 이르러 내 증인이 되리라 하시니라">복사</button></div>
+</div>
+
+<div class="verse">
+  <div><span class="ref">누가복음 17:21</span><span class="tt">질문 ①의 말씀</span></div>
+  <p>또 여기 있다 저기 있다고도 못하리니 하나님의 나라는 너희 안에 있느니라</p>
+  <div class="row"><button class="copy alt" data-copy="누가복음 17:21&#10;또 여기 있다 저기 있다고도 못하리니 하나님의 나라는 너희 안에 있느니라">복사</button></div>
+</div>
+
+<div class="row">
+  <button class="copy" data-copy="📖 1주차 말씀&#10;&#10;창세기 1:28 (문화명령)&#10;하나님이 그들에게 복을 주시며 하나님이 그들에게 이르시되 생육하고 번성하여 땅에 충만하라, 땅을 정복하라, 바다의 물고기와 하늘의 새와 땅에 움직이는 모든 생물을 다스리라 하시니라&#10;&#10;마태복음 28:19-20 (지상명령)&#10;그러므로 너희는 가서 모든 족속으로 제자를 삼아 아버지와 아들과 성령의 이름으로 세례를 베풀고 내가 너희에게 분부한 모든 것을 가르쳐 지키게 하라 볼지어다 내가 세상 끝날까지 너희와 항상 함께 있으리라&#10;&#10;사도행전 1:8 (확장의 지도)&#10;오직 성령이 너희에게 임하시면 너희가 권능을 받고 예루살렘과 온 유대와 사마리아와 땅 끝까지 이르러 내 증인이 되리라 하시니라">세 구절 한 번에 복사</button>
+</div>
+
+<!-- 4 강의 -->
+<h2 id="lecture">4. 1주차 강의, 이것만 잡고 들어가기</h2>
+<p class="sub">두 조 모두 키워드에서 같은 말이 반복됐다. 많이 나온 순서는 <b>정체성 → 하나님 나라(통치) → 지상명령·미션 → 예루살렘·유대·사마리아·땅끝(확장)</b>. 강의는 Part 1 〈하나님 나라의 시작과 회복〉, Part 2 〈하나님 나라의 확장과 선교〉로 나뉜다(신은호 강사).</p>
+
+<div class="card sec g">
+  <h2><span>① 정체성</span> <span class="tag">강의 시작</span></h2>
+  <ul>
+    <li>모습·역할·이름은 달라져도(학생, 직장인, 부모 …) <b>변하지 않는 것은 하나님의 말씀에 붙들린 하나님의 자녀라는 정체성</b>이다.</li>
+    <li>"하나님의 자녀"가 <b>교회 용어로만 닳아 있지는 않은가</b>를 되묻는 지점. 참가자들이 가장 자기 이야기를 많이 꺼냈다.</li>
+    <li>참가자 인용: 영접하는 자에게 하나님의 자녀가 되는 권세를 주셨다(요 1:12).</li>
+  </ul>
+</div>
+
+<div class="card sec w">
+  <h2><span>② 하나님 나라</span> <span class="tag">Part 1 · 두 갈래 + 미션</span></h2>
+  <h3>갈래 1. 성경 한 줄기: 끊임없는 회복의 이야기</h3>
+  <ul>
+    <li>창조의 목적과 문화명령(창 1:28) → <b>선악과</b>(하지 말라는 단 한 가지를 지키는 것 = "하나님이 나의 왕이십니다"를 인정하는 표시) → 타락</li>
+    <li>타락과 죄의 확장, <b>바벨탑</b>('하나님과 같이 되고자 함' → 무너진 하나님 나라, 흩어진 열방의 시작). 말씀을 잊고 내 힘으로 방도를 찾는 모습</li>
+    <li>한 사람 <b>아브라함</b>(창 12:1-3, 땅의 모든 족속이 복을 얻으리라 → 처음부터 모든 민족을 향하심)</li>
+    <li>약속의 성취 <b>예수 그리스도</b>(마 1:1, 마 4:17), <b>십자가와 부활</b>(하나님 통치의 회복, "하나님 나라의 시민권자"), 다시 오실 때 완성</li>
+  </ul>
+  <h3>갈래 2. 내 삶: 예수님의 통치가 있는 곳이 하나님 나라</h3>
+  <ul>
+    <li>예수님의 통치를 받고 있으면 하나님 나라를 살고 있고, 내 멋대로 하면 그 순간은 밖에 있다. 통치가 "음소거"되는 순간을 알아차리는 것이 요점.</li>
+    <li>선악과를 따지 않으려는 노력 = 삶 속에서 하나님의 주권을 인정하는 일.</li>
+  </ul>
+  <h3>미션: 왜 사는가에 대한 답</h3>
+  <ul>
+    <li><b>문화명령</b>과 <b>지상명령</b>. 하나님이 이미 주신 "퀘스트"이고, 우리는 받아 놓고 몰랐을 뿐이라는 설명이 좋은 반응을 얻었다.</li>
+  </ul>
+</div>
+
+<div class="card sec m">
+  <h2><span>③ 확장</span> <span class="tag">Part 2 · 세계 선교 역사</span></h2>
+  <ul>
+    <li><b>사도행전 1:8</b>: 단계가 아니라 <b>동시에, 동일선상에서</b>. 참가자들이 사마리아를 "물리적으로 가깝지만 마음으로 먼 사람"으로 풀어낸 것이 인상적이었다.</li>
+    <li>세계선교 역사 세 물결: 제1물결 <b>해안선</b> 선교(윌리엄 캐리) → 제2물결 <b>내륙</b> 선교(허드슨 테일러) → 제3물결 <b>종족</b> 선교(타운젠드·맥가브란; 종족 언어로 성경 번역). 시작은 유명한 목사가 아니라 <b>한 청년</b>이었다.</li>
+    <li>현대선교: <b>미전도종족과 10/40창</b>(랄프 윈터 &amp; 루이스 부시, 9.11 이후 서구권 → 비서구권 중심으로 리더십 이양).</li>
+    <li>새로운 주역 <b>한국 교회</b>: 재정의 축복 + 한류(K-Culture) → 전 세계적 호감·문화적 접촉점. 워크북 수치: 선교사 파송 22,204명 · 파송 국가 169개국 · 한류 팬 1.78억 명.</li>
+    <li><b>같은 사명, 다른 모습</b>: 가는 사람 / 기도와 물질로 보내는 사람 / 전문성을 가지고 가는·보내는 사람 / 자기 자리에서 준비하며 때를 기다리는 사람. 선교=떠남이라는 부담을 내려놓게 한 가장 큰 위로의 지점이었다.</li>
+    <li>이어질 이야기: "이 천국 복음이 모든 민족에게 증언되고… 그제야 끝이 오리라"(마 24:14) → 계 22:21. 워크북 「나의 결단」 칸이 있다.</li>
+  </ul>
+</div>
+
+<div class="box"><strong class="t">히킹스 전체를 꿰는 세 단어 (팀장 정리)</strong>
+  <b>하나님 나라 · 한 영혼 · 부르심.</b> 1주차는 그중 하나님 나라를 깔아 주는 강의라서, 앞으로 매주 "하나님 나라가 대체 뭐지?"를 계속 정의해 보게 하는 것이 목표.
+</div>
+
+<!-- 5 팁 -->
+<h2 id="tips">5. 두 모임에서 관찰한 것 · 체크리스트</h2>
+<div class="grid">
+  <div class="card"><b>잘 된 것</b>
+    <ul>
+      <li>참가자 키워드가 요약의 뼈대가 되어 조장이 새로 설명할 것이 적어졌다.</li>
+      <li>"늦게 올린 사람부터" 규칙이 순서 정하기의 어색함을 없앴다.</li>
+      <li>강의를 일부만 들은 사람, 이동 중에 접속한 사람은 들은 만큼만 나누게 했다.</li>
+      <li>질문 답을 그대로 기도제목으로 이어 나눔과 기도가 끊기지 않았다.</li>
+      <li>조장이 기도제목을 받아 적으니 타자가 힘든 사람도 말로 나눌 수 있었다.</li>
+      <li>마지막 기도를 강의 꼭지(정체성 → 미션 → 확장) 순서로 했더니 복습이 되었다.</li>
+    </ul>
+  </div>
+  <div class="card"><b>아쉬웠던 것 · 고칠 것</b>
+    <ul>
+      <li>요약이 14분까지 길어져 기도가 4분으로 줄었다. <b>3~5분 목표</b>.</li>
+      <li>늦게 들어온 사람이 키워드만 쓰고 이유를 못 나눴다. 이유 한 문장을 같이 부탁한다.</li>
+      <li>"자기 다음 사람을 위한 기도" 방식은 제목을 놓치기 쉽다. 시작 전에 순서를 한 번 더 알린다.</li>
+      <li>종료 시각을 중간에야 정했다. 처음에 "몇 시까지"를 말해 둔다.</li>
+      <li>접속 환경(소리, 배터리, 이동 중)을 시작할 때 한 번 확인한다.</li>
+    </ul>
+  </div>
+</div>
+
+<h3>자주 나온 반응과 조장의 자세</h3>
+<div class="scroll"><table>
+  <tr><th>이런 반응이 나오면</th><th>이렇게</th></tr>
+  <tr><td>"하나님의 자녀인 건 아는데 힘들 때는 와닿지 않는다"</td><td>고치려 하지 않고 받아 적고 기도로 잇는다. 정체성 이야기가 이 모임의 중심이다.</td></tr>
+  <tr><td>"내 직업·진로로 무엇을 할 수 있을지 모르겠다"</td><td>「같은 사명, 다른 모습」으로 돌려준다. 답을 정해 주지 않고 질문 ②로 잇는다.</td></tr>
+  <tr><td>"나는 선교 가는 사람이 아닌 것 같다"</td><td>가는 사람만 선교가 아니라는 점이 가장 큰 위로. 이 말을 들은 참가자들이 가장 편해졌다.</td></tr>
+  <tr><td>"돈·건강 같은 현실은 맡기기 어렵다"</td><td>해결하지 말고 그대로 기도제목에 둔다.</td></tr>
+  <tr><td>강의를 다 못 들었다고 미안해한다</td><td>"들은 만큼만 나눠 주세요". 다른 사람의 키워드를 들으며 채우게 한다.</td></tr>
+</table></div>
+
+<h3>조장 준비 체크리스트</h3>
+<div class="card">
+  <ul style="list-style:none;padding-left:0">
+    <li>☐ 강의를 끝까지 보고 <b>키워드 3개와 고른 이유</b>를 적어 둔다 (조장 필기가 곧 요약 재료).</li>
+    <li>☐ 요약 3꼭지(정체성 / 하나님 나라 / 확장)와 말씀 3구절을 한눈에 볼 수 있게 열어 둔다.</li>
+    <li>☐ 위의 <a href="#questions">질문 복사 버튼</a>으로 채팅에 바로 올릴 준비를 한다.</li>
+    <li>☐ 기도제목을 받아 적을 곳(메모장·공유 문서)을 열어 둔다.</li>
+    <li>☐ 시작할 때 종료 시각을 알린다.</li>
+    <li>☐ 모임이 끝나면 기도제목을 정리해 조원에게 남긴다.</li>
+  </ul>
+</div>
+
+<footer>정리: 산초 · 테일러 (히킹스 온라인 팀장 요청) · 원자료: HKS Vol. 6 His Kingdom 워크북(Day 1) · 목·금 온라인 모임 전사 2건 · 2026.11.02<br>
+나눔 중 나온 개인 사정은 이 문서에 넣지 않았다. 조 안에서 나온 이야기는 조 안에서만 둔다.</footer>
+</div>
+
+<script>
+(function(){
+  function legacyCopy(t){
+    var a=document.createElement('textarea');
+    a.value=t;a.setAttribute('readonly','');
+    a.style.cssText='position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(a);a.select();a.setSelectionRange(0,t.length);
+    var ok=false;try{ok=document.execCommand('copy')}catch(e){}
+    document.body.removeChild(a);return ok;
+  }
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext){
+      return navigator.clipboard.writeText(t).then(function(){return true},function(){return legacyCopy(t)});
+    }
+    return Promise.resolve(legacyCopy(t));
+  }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.copy');if(!b)return;
+    var t=b.getAttribute('data-copy');if(!t)return;
+    var label=b.getAttribute('data-label')||b.textContent;
+    b.setAttribute('data-label',label);
+    copy(t).then(function(ok){
+      b.textContent=ok?'복사됨 ✓':'복사 실패 · 글을 길게 눌러 복사';
+      b.classList.toggle('done',!!ok);
+      setTimeout(function(){b.textContent=label;b.classList.remove('done')},1800);
+    });
+  });
+})();
+</script>
+</body>
+</html>
